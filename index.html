@@ -4,111 +4,113 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Platform Analytics</title>
-  <meta name="description" content="Smart Platform for Data Analytics, Dashboard and AI Insights" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <div class="bg-orbit bg-orbit-one"></div>
-  <div class="bg-orbit bg-orbit-two"></div>
-  <div class="bg-grid"></div>
+  <main class="login-page">
+    <div class="bg-shade"></div>
+    <div class="bg-glow"></div>
 
-  <main id="loginView" class="login-view">
-    <section class="login-card glass-panel">
-      <div class="brand-mark">
-        <div class="ai-cube">◇</div>
-        <span>SMART PLATFORM</span>
-      </div>
-      <h1>Analytics</h1>
-      <p class="subtitle">AI-powered insights for smart decision</p>
-
-      <form id="loginForm" class="login-form">
-        <label>Username</label>
-        <input id="username" type="text" autocomplete="username" placeholder="admin" />
-        <label>Password</label>
-        <input id="password" type="password" autocomplete="current-password" placeholder="1234" />
-        <button type="submit">Sign in</button>
-      </form>
-      <p id="loginMessage" class="login-message">Demo: admin / 1234</p>
-    </section>
-  </main>
-
-  <main id="appView" class="app-shell hidden">
-    <aside class="sidebar glass-panel">
-      <div class="sidebar-brand">
-        <div class="logo-orb">✦</div>
-        <div>
-          <strong>Smart Platform</strong>
-          <span>Analytics</span>
+    <section class="login-layout" aria-label="Smart Platform Analytics Login">
+      <header class="logo-bar">
+        <div class="logo-unit">
+          <img src="assets/images/logos/bma-logo.png" alt="BMA Logo" class="logo-img" />
+          <div class="logo-text">
+            <strong>BMA</strong>
+            <span>BANGKOK METROPOLITAN<br />ADMINISTRATION</span>
+          </div>
         </div>
-      </div>
-      <nav class="nav-menu">
-        <button class="nav-item active" data-page="dashboard">Dashboard</button>
-        <button class="nav-item" data-page="data">Data Management</button>
-        <button class="nav-item" data-page="ai">AI Insights</button>
-        <button class="nav-item" data-page="reports">Reports</button>
-        <button class="nav-item" data-page="settings">System Settings</button>
-      </nav>
-      <div class="user-chip">
-        <div class="avatar">A</div>
-        <div><strong>Admin</strong><span>System Admin</span></div>
-      </div>
-    </aside>
 
-    <section class="content-area">
-      <header class="topbar glass-panel">
-        <div>
-          <p class="eyebrow">AI COMMAND CENTER</p>
-          <h2 id="pageTitle">Executive Overview</h2>
+        <i class="logo-divider"></i>
+
+        <div class="logo-unit logo-unit-right">
+          <img src="assets/images/logos/chatuchak-logo.png" alt="Chatuchak Logo" class="logo-img chatuchak-logo" />
+          <div class="logo-text">
+            <strong>จตุจักร</strong>
+            <span>องค์กรคุณธรรมต้นแบบ<br />กรุงเทพมหานคร</span>
+          </div>
         </div>
-        <div class="status-pill">All systems operational</div>
       </header>
 
-      <section id="dashboardPage" class="page active-page">
-        <div class="hero-panel glass-panel">
-          <div>
-            <p class="eyebrow cyan">SMART PLATFORM ANALYTICS</p>
-            <h1>Executive Dashboard for AI-powered data decisions</h1>
-            <p>ศูนย์กลางข้อมูล วิเคราะห์แนวโน้ม และสนับสนุนการตัดสินใจด้วย AI ในรูปแบบ Command Center</p>
-          </div>
-          <div class="hero-orb"><span>AI</span></div>
-        </div>
+      <form class="login-card" id="loginForm">
+        <h1>WELCOME BACK</h1>
+        <p>Please sign in to continue</p>
 
-        <div class="kpi-grid">
-          <article class="kpi-card glass-panel"><span>Total Records</span><strong>7,248</strong><small>Ready for migration</small></article>
-          <article class="kpi-card glass-panel"><span>Active Modules</span><strong>05</strong><small>Dashboard / Data / AI</small></article>
-          <article class="kpi-card glass-panel"><span>Insight Score</span><strong>92.4%</strong><small>Mockup indicator</small></article>
-          <article class="kpi-card glass-panel gold"><span>Decision Ready</span><strong>AI</strong><small>Executive summary</small></article>
-        </div>
+        <label class="field">
+          <span class="field-icon">♙</span>
+          <input id="username" name="username" type="text" placeholder="Username" autocomplete="username" required />
+        </label>
 
-        <div class="dashboard-grid">
-          <article class="chart-card glass-panel large">
-            <div class="card-head"><h3>Performance Overview</h3><span>This year</span></div>
-            <div class="line-chart" aria-label="decorative analytics chart">
-              <svg viewBox="0 0 600 220" preserveAspectRatio="none">
-                <polyline points="0,170 70,145 130,155 200,115 260,125 320,70 390,98 450,82 520,105 600,62" />
-                <polyline class="gold-line" points="0,185 70,168 130,176 200,148 260,110 320,118 390,135 450,104 520,86 600,95" />
-              </svg>
-            </div>
-          </article>
-          <article class="chart-card glass-panel"><div class="card-head"><h3>Status Mix</h3></div><div class="donut">72%</div></article>
-          <article class="chart-card glass-panel"><div class="card-head"><h3>AI Insight</h3></div><p class="insight-text">ระบบพร้อมสำหรับเชื่อมต่อ Google Sheet และ Apps Script ใน Phase ถัดไป</p></article>
-        </div>
-      </section>
+        <label class="field">
+          <span class="field-icon">▣</span>
+          <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+          <button class="ghost-btn" id="togglePassword" type="button" aria-label="Show password">◉</button>
+        </label>
 
-      <section id="dataPage" class="page">
-        <div class="glass-panel module-panel"><h2>Data Management</h2><p>พื้นที่สำหรับจัดการข้อมูลจาก Google Sheet / Apps Script ในระยะถัดไป</p></div>
-      </section>
-      <section id="aiPage" class="page">
-        <div class="glass-panel module-panel"><h2>AI Insights</h2><p>พื้นที่สำหรับ AI Summary, Risk Detection, Forecast และ Recommendation</p></div>
-      </section>
-      <section id="reportsPage" class="page">
-        <div class="glass-panel module-panel"><h2>Reports</h2><p>พื้นที่สำหรับรายงานผู้บริหารและ export ข้อมูล</p></div>
-      </section>
-      <section id="settingsPage" class="page">
-        <div class="glass-panel module-panel"><h2>System Settings</h2><p>ตั้งค่าระบบ ผู้ใช้งาน และแหล่งข้อมูล</p></div>
-      </section>
+        <button class="signin-btn" type="submit">SIGN IN →</button>
+
+        <div id="loginMessage" class="login-message" role="status"></div>
+
+        <footer class="trust-line">
+          <span>♢ Secure</span>
+          <b>•</b>
+          <span>Smart</span>
+          <b>•</b>
+          <span>Sustainable</span>
+        </footer>
+      </form>
+
+      <footer class="page-footer">
+        © 2026 Bangkok Metropolitan Administration<br />
+        All rights reserved.
+      </footer>
     </section>
   </main>
+
+  <section id="dashboardPage" class="dashboard-page hidden">
+    <aside class="sidebar">
+      <div class="side-brand">
+        <div class="mini-orb">SPA</div>
+        <div>
+          <strong>SMART PLATFORM</strong>
+          <span>ANALYTICS</span>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-link active">Dashboard</button>
+        <button class="nav-link">Data Management</button>
+        <button class="nav-link">AI Insights</button>
+        <button class="nav-link">Reports</button>
+        <button class="nav-link">System Settings</button>
+      </nav>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p>AI Command Center</p>
+          <h2>Executive Overview</h2>
+        </div>
+
+        <div class="user-panel">
+          <div class="avatar">A</div>
+          <div>
+            <strong>Admin</strong>
+            <span>System Administrator</span>
+          </div>
+          <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="kpi-card"><span>Total Records</span><strong>7,000+</strong><small>Ready for analytics</small></article>
+        <article class="kpi-card"><span>AI Readiness</span><strong>92.4%</strong><small>Insight engine standby</small></article>
+        <article class="kpi-card"><span>Dashboard</span><strong>Live</strong><small>Executive view enabled</small></article>
+        <article class="kpi-card gold-card"><span>Platform Status</span><strong>Secure</strong><small>Foundation v1.3</small></article>
+      </section>
+    </main>
+  </section>
 
   <script src="assets/js/app.js"></script>
 </body>
