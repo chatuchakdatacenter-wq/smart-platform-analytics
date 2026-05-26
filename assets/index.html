@@ -12,7 +12,7 @@
       --text:#f7fbff;
       --muted:rgba(247,251,255,.72);
       --line:rgba(95,214,255,.34);
-      --bg-url:url('https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/backgrounds/login-bg.png');
+      --bg-url:none;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -23,19 +23,38 @@
 
     .login-page{
       position:relative;width:100vw;height:100vh;overflow:hidden;
-      background-image:
-        radial-gradient(circle at 72% 52%, rgba(0,212,255,.10), transparent 34%),
-        linear-gradient(90deg, rgba(1,8,24,.80) 0%, rgba(1,8,24,.58) 30%, rgba(1,8,24,.24) 58%, rgba(1,8,24,.08) 100%),
-        var(--bg-url);
-      background-repeat:no-repeat,no-repeat,no-repeat;
-      background-size:100% 100%,100% 100%,74% auto;
-      background-position:center,center,118% center;
+      background:#020918;
+      isolation:isolate;
     }
 
-    .login-page::before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.28));
+    .city-bg{
+      position:absolute;z-index:-3;
+      right:-16vw;top:50%;
+      width:78vw;max-width:none;height:auto;
+      transform:translateY(-50%);
+      object-fit:contain;
+      object-position:right center;
+      filter:saturate(1.08) contrast(1.04);
+      user-select:none;pointer-events:none;
     }
+
+    .city-bg-fallback{
+      position:absolute;inset:0;z-index:-4;
+      background-image:var(--bg-url);
+      background-repeat:no-repeat;
+      background-size:78% auto;
+      background-position:116% center;
+      opacity:1;
+    }
+
+    .bg-overlay{
+      position:absolute;inset:0;z-index:-2;pointer-events:none;
+      background:
+        radial-gradient(circle at 74% 52%, rgba(0,212,255,.12), transparent 35%),
+        linear-gradient(90deg, rgba(1,8,24,.82) 0%, rgba(1,8,24,.56) 34%, rgba(1,8,24,.20) 64%, rgba(1,8,24,.08) 100%),
+        linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.24));
+    }
+
 
     .login-shell{position:relative;z-index:1;width:100%;height:100%;padding:38px 38px 28px;display:flex;align-items:center}
 
@@ -97,24 +116,27 @@
     .dashboard-page{min-height:100vh;background:#06111f;color:white;padding:30px;font-family:inherit}.dashboard-page h2{font-size:32px}.logout-btn{margin-top:20px;padding:12px 18px;border:0;border-radius:8px;background:#16d9c8;color:#06111f;font-weight:800}
 
     @media (max-width:1100px){
-      .login-page{background-size:92% auto;background-position:135% center}.glass-panel{width:540px;padding:34px 34px}.logo-text strong{font-size:36px}.hero-title h1{font-size:42px}
+      .city-bg{width:94vw;right:-28vw}.city-bg-fallback{background-size:94% auto;background-position:132% center}.glass-panel{width:540px;padding:34px 34px}.logo-text strong{font-size:36px}.hero-title h1{font-size:42px}
     }
     @media (max-width:760px){
-      html,body{overflow:auto;position:static}.login-page{min-height:100vh;height:auto;overflow:auto;background-size:cover;background-position:center}.login-shell{height:auto;min-height:100vh;padding:18px;align-items:flex-start}.glass-panel{width:100%;max-height:none;padding:24px 20px;margin-bottom:90px}.logo-bar{gap:12px;margin-bottom:30px}.logo-img{width:52px;height:52px}.logo-text strong{font-size:30px}.logo-unit-right .logo-text strong{font-size:22px}.logo-text span{font-size:9px}.logo-unit-right .logo-text span{font-size:10px}.hero-title h1{font-size:34px}.hero-title .thai{font-size:20px}.hero-title .sub{letter-spacing:.26em;font-size:11px}.field,.signin-btn,.google-btn{height:56px}.trust-line{grid-template-columns:1fr;gap:10px}.trust-item{border-right:0}.page-footer{left:18px;right:18px;bottom:14px;height:auto;min-height:58px;padding:12px;gap:8px;font-size:12px;flex-wrap:wrap;justify-content:center}}
+      html,body{overflow:auto;position:static}.login-page{min-height:100vh;height:auto;overflow:auto}.city-bg{width:150vw;right:-48vw;top:38%;opacity:.95}.city-bg-fallback{background-size:cover;background-position:center}.login-shell{height:auto;min-height:100vh;padding:18px;align-items:flex-start}.glass-panel{width:100%;max-height:none;padding:24px 20px;margin-bottom:90px}.logo-bar{gap:12px;margin-bottom:30px}.logo-img{width:52px;height:52px}.logo-text strong{font-size:30px}.logo-unit-right .logo-text strong{font-size:22px}.logo-text span{font-size:9px}.logo-unit-right .logo-text span{font-size:10px}.hero-title h1{font-size:34px}.hero-title .thai{font-size:20px}.hero-title .sub{letter-spacing:.26em;font-size:11px}.field,.signin-btn,.google-btn{height:56px}.trust-line{grid-template-columns:1fr;gap:10px}.trust-item{border-right:0}.page-footer{left:18px;right:18px;bottom:14px;height:auto;min-height:58px;padding:12px;gap:8px;font-size:12px;flex-wrap:wrap;justify-content:center}}
   </style>
 </head>
 <body>
   <main class="login-page" id="loginPage">
+    <div class="city-bg-fallback" aria-hidden="true"></div>
+    <img id="cityBg" class="city-bg" alt="" aria-hidden="true" />
+    <div class="bg-overlay" aria-hidden="true"></div>
     <section class="login-shell" aria-label="Smart Platform Analytics Login">
       <div class="glass-panel">
         <header class="logo-bar">
           <div class="logo-unit">
-            <img src="https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/bma-logo.png" alt="BMA Logo" class="logo-img" />
+            <img src="assets/images/logos/bma-logo.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/bma-logo.png'" alt="BMA Logo" class="logo-img" />
             <div class="logo-text"><strong>BMA</strong><span>BANGKOK METROPOLITAN<br />ADMINISTRATION</span></div>
           </div>
           <i class="logo-divider"></i>
           <div class="logo-unit logo-unit-right">
-            <img src="https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/chatuchak-logo.png" alt="Chatuchak Logo" class="logo-img" />
+            <img src="assets/images/logos/chatuchak-logo.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/chatuchak-logo.png'" alt="Chatuchak Logo" class="logo-img" />
             <div class="logo-text"><strong>จตุจักร</strong><span>สำนักงานเขตจตุจักร<br />กรุงเทพมหานคร</span></div>
           </div>
         </header>
@@ -166,6 +188,25 @@
   </section>
 
   <script>
+
+    const CITY_BG_CANDIDATES = [
+      '/smart-platform-analytics/assets/images/backgrounds/login-bg.png',
+      'assets/images/backgrounds/login-bg.png',
+      'https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/backgrounds/login-bg.png'
+    ];
+    const cityBg = document.getElementById('cityBg');
+    function loadCityBg(index=0){
+      const url = CITY_BG_CANDIDATES[index];
+      if(!url || !cityBg) return;
+      const test = new Image();
+      test.onload = () => {
+        cityBg.src = url;
+        document.documentElement.style.setProperty('--bg-url', `url("${url}")`);
+      };
+      test.onerror = () => loadCityBg(index + 1);
+      test.src = url;
+    }
+    loadCityBg();
     const loginPage=document.getElementById('loginPage');
     const dashboardPage=document.getElementById('dashboardPage');
     const form=document.getElementById('loginForm');
