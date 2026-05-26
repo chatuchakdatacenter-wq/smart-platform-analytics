@@ -2,407 +2,180 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Platform Analytics | Login</title>
-  <meta name="description" content="Smart Platform Analytics - Chatuchak Digital Command Center" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Smart Platform Analytics</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bma-green:#005C46;
+      --cyan:#19f4df;
+      --blue:#1685ff;
+      --text:#f7fbff;
+      --muted:rgba(247,251,255,.72);
+      --line:rgba(95,214,255,.34);
+      --bg-url:url('https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/backgrounds/login-bg.png');
     }
 
-    :root {
-      --cyan: #18d7ff;
-      --green: #00e6b8;
-      --blue: #279cff;
-      --dark: #021020;
-      --glass: rgba(1, 10, 25, 0.70);
-      --glass-strong: rgba(1, 10, 25, 0.82);
-      --line: rgba(24, 215, 255, 0.28);
-      --text: #ffffff;
-      --muted: #d6ecff;
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{width:100%;height:100%;overflow:hidden;background:#020918;color:var(--text);font-family:Inter,"Segoe UI",Tahoma,sans-serif}
+    body{position:fixed;inset:0}
+
+    .hidden{display:none!important}
+
+    .login-page{
+      position:relative;width:100vw;height:100vh;overflow:hidden;
+      background-image:
+        radial-gradient(circle at 72% 52%, rgba(0,212,255,.10), transparent 34%),
+        linear-gradient(90deg, rgba(1,8,24,.80) 0%, rgba(1,8,24,.58) 30%, rgba(1,8,24,.24) 58%, rgba(1,8,24,.08) 100%),
+        var(--bg-url);
+      background-repeat:no-repeat,no-repeat,no-repeat;
+      background-size:100% 100%,100% 100%,74% auto;
+      background-position:center,center,118% center;
     }
 
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
+    .login-page::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.28));
     }
 
-    body {
-      font-family: "Sarabun", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      min-height: 100vh;
-      background: var(--dark);
-      overflow: hidden;
-      color: var(--text);
+    .login-shell{position:relative;z-index:1;width:100%;height:100%;padding:38px 38px 28px;display:flex;align-items:center}
+
+    .glass-panel{
+      width:min(590px,42vw);max-height:calc(100vh - 112px);overflow:hidden;
+      padding:42px 44px 34px;border-radius:18px;
+      background:rgba(4,16,38,.48);
+      border:1px solid rgba(83,217,255,.52);
+      box-shadow:0 24px 70px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.14), 0 0 34px rgba(0,176,255,.08);
+      backdrop-filter:blur(18px) saturate(138%);
+      -webkit-backdrop-filter:blur(18px) saturate(138%);
     }
 
-    .login-page {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 34px 42px;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(2, 10, 25, 0.84) 0%,
-          rgba(2, 10, 25, 0.62) 32%,
-          rgba(2, 10, 25, 0.24) 58%,
-          rgba(2, 10, 25, 0.08) 78%,
-          rgba(2, 10, 25, 0.16) 100%
-        ),
-        url("assets/images/backgrounds/login-bg.png");
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
+    .logo-bar{display:flex;align-items:center;gap:22px;margin-bottom:46px}
+    .logo-unit{display:flex;align-items:center;gap:14px;min-width:0}
+    .logo-divider{width:1px;height:62px;background:rgba(255,255,255,.24);display:block;flex:0 0 auto}
+    .logo-img{width:66px;height:66px;object-fit:contain;background:rgba(255,255,255,.96);border-radius:4px;padding:4px;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
+    .logo-text strong{display:block;font-size:42px;line-height:.9;font-weight:900;letter-spacing:.02em}
+    .logo-unit-right .logo-text strong{font-size:30px;letter-spacing:.01em}
+    .logo-text span{display:block;margin-top:8px;font-size:11px;line-height:1.2;font-weight:800;color:#fff;text-transform:uppercase}
+    .logo-unit-right .logo-text span{text-transform:none;font-size:12px;line-height:1.25}
+
+    .hero-title{text-align:center;margin-bottom:28px}
+    .hero-title h1{font-size:48px;line-height:1;font-weight:900;letter-spacing:.045em;background:linear-gradient(90deg,#22f7d2,#1685ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 28px rgba(0,211,255,.16)}
+    .hero-title .thai{margin-top:12px;font-size:25px;font-weight:800;color:#fff}
+    .hero-title .sub{margin-top:10px;font-size:14px;letter-spacing:.44em;color:rgba(255,255,255,.70)}
+    .hero-title .dash{width:170px;height:1px;margin:16px auto 0;background:linear-gradient(90deg,transparent,rgba(26,245,222,.8),transparent);position:relative}
+    .hero-title .dash::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--cyan);transform:translate(-50%,-50%);box-shadow:0 0 15px var(--cyan)}
+
+    .login-card{display:flex;flex-direction:column;gap:18px}
+    .field{height:64px;display:flex;align-items:center;gap:18px;padding:0 20px;border:1px solid rgba(143,190,229,.38);border-radius:9px;background:rgba(2,10,28,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .field svg{width:26px;height:26px;color:#fff;opacity:.9;flex:0 0 auto}
+    .field input{width:100%;height:100%;border:0;outline:0;background:transparent;color:#fff;font-size:18px}
+    .field input::placeholder{color:rgba(255,255,255,.68)}
+    .ghost-btn{border:0;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;opacity:.88}
+    .ghost-btn svg{width:24px;height:24px}
+
+    .row-options{display:flex;align-items:center;justify-content:space-between;margin-top:0;font-size:14px;color:#fff}
+    .remember{display:flex;align-items:center;gap:12px}
+    .remember input{width:20px;height:20px;accent-color:var(--cyan)}
+    .forgot{color:var(--cyan);text-decoration:none}
+
+    .signin-btn{height:64px;border:0;border-radius:9px;cursor:pointer;font-size:20px;font-weight:900;letter-spacing:.02em;color:#021226;background:linear-gradient(135deg,#24f2ca 0%,#1ccddd 44%,#1685ff 100%);box-shadow:0 12px 30px rgba(0,126,255,.25)}
+    .signin-btn:hover{filter:brightness(1.08)}
+    .or{display:flex;align-items:center;gap:16px;color:#fff;opacity:.9;font-size:16px;margin:4px 0}
+    .or::before,.or::after{content:"";height:1px;background:rgba(255,255,255,.15);flex:1}
+    .google-btn{height:64px;border:1px solid rgba(143,190,229,.38);border-radius:9px;background:rgba(2,10,28,.26);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;gap:16px;cursor:pointer}
+    .google-g{font-weight:900;font-size:23px;letter-spacing:-.12em}.google-g span:nth-child(1){color:#4285f4}.google-g span:nth-child(2){color:#db4437}.google-g span:nth-child(3){color:#f4b400}.google-g span:nth-child(4){color:#4285f4}.google-g span:nth-child(5){color:#0f9d58}.google-g span:nth-child(6){color:#db4437}
+    .login-message{min-height:18px;text-align:center;color:#ffdf7d;font-size:13px}
+
+    .trust-line{margin-top:4px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .trust-item{display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;font-size:15px;line-height:1.25;border-right:1px solid rgba(255,255,255,.12)}
+    .trust-item:last-child{border-right:0}.trust-item svg{width:32px;height:32px;color:var(--cyan);filter:drop-shadow(0 0 10px rgba(26,245,222,.25))}
+    .trust-item small{display:block;color:#fff;font-size:13px;opacity:.9}
+
+    .page-footer{position:absolute;left:38px;right:38px;bottom:22px;height:58px;border-radius:10px;border:1px solid rgba(83,217,255,.18);background:rgba(4,16,38,.48);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 26px;color:rgba(255,255,255,.74);font-size:15px;z-index:2;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+    .footer-left,.footer-center{display:flex;align-items:center;gap:18px}.footer-left svg{width:22px;height:22px;color:var(--cyan)}.dot{width:5px;height:5px;border-radius:50%;background:#28ebbc;display:inline-block}.version{color:rgba(255,255,255,.78)}
+
+    .dashboard-page{min-height:100vh;background:#06111f;color:white;padding:30px;font-family:inherit}.dashboard-page h2{font-size:32px}.logout-btn{margin-top:20px;padding:12px 18px;border:0;border-radius:8px;background:#16d9c8;color:#06111f;font-weight:800}
+
+    @media (max-width:1100px){
+      .login-page{background-size:92% auto;background-position:135% center}.glass-panel{width:540px;padding:34px 34px}.logo-text strong{font-size:36px}.hero-title h1{font-size:42px}
     }
-
-    .login-page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 16% 18%, rgba(0, 230, 184, 0.16), transparent 30%),
-        radial-gradient(circle at 72% 16%, rgba(24, 215, 255, 0.10), transparent 26%);
-      z-index: 0;
-    }
-
-    .login-card {
-      position: relative;
-      z-index: 2;
-      width: 510px;
-      padding: 26px 28px;
-      border-radius: 26px;
-      background: var(--glass);
-      border: 1px solid var(--line);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      box-shadow:
-        0 26px 70px rgba(0, 0, 0, 0.52),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      margin-left: 10px;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      margin-bottom: 24px;
-    }
-
-    .logo-row img {
-      height: 54px;
-      max-width: 210px;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.25));
-    }
-
-    .welcome {
-      font-size: clamp(36px, 4.1vw, 46px);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: 0.02em;
-      background: linear-gradient(135deg, var(--green), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .sub {
-      font-size: 18px;
-      color: #fff;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .platform {
-      letter-spacing: 0.34em;
-      font-size: 12px;
-      color: #8fcff7;
-      margin-bottom: 22px;
-      white-space: nowrap;
-    }
-
-    .input {
-      position: relative;
-      margin-bottom: 14px;
-    }
-
-    .input input {
-      width: 100%;
-      height: 56px;
-      padding: 0 18px 0 50px;
-      border-radius: 16px;
-      background: rgba(2, 10, 25, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #fff;
-      font-size: 17px;
-      outline: none;
-      transition: 0.22s ease;
-    }
-
-    .input input::placeholder {
-      color: rgba(214, 236, 255, 0.62);
-    }
-
-    .input input:focus {
-      border-color: rgba(24, 215, 255, 0.68);
-      box-shadow: 0 0 0 3px rgba(24, 215, 255, 0.12);
-      background: rgba(2, 10, 25, 0.72);
-    }
-
-    .input span {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.9;
-    }
-
-    .options {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #dbefff;
-      font-size: 14px;
-      margin: 8px 0 20px;
-      gap: 12px;
-    }
-
-    .options span {
-      color: #9fe7ff;
-    }
-
-    .btn {
-      width: 100%;
-      height: 62px;
-      border: none;
-      border-radius: 16px;
-      font-size: 23px;
-      font-weight: 800;
-      cursor: pointer;
-      background: linear-gradient(135deg, #22e1c6, #279cff);
-      color: #00111b;
-      box-shadow: 0 14px 34px rgba(24, 215, 255, 0.24);
-      transition: 0.22s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 42px rgba(24, 215, 255, 0.32);
-    }
-
-    .bottom {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      color: #cde8ff;
-      font-size: 14px;
-    }
-
-    .bottom div {
-      flex: 1;
-      text-align: center;
-      opacity: 0.92;
-    }
-
-    .hero {
-      position: absolute;
-      z-index: 1;
-      right: 5.5%;
-      top: 9%;
-      max-width: 560px;
-      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero h1 {
-      font-size: clamp(48px, 5.5vw, 68px);
-      line-height: 0.92;
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-
-    .hero h1 span {
-      display: block;
-      background: linear-gradient(135deg, var(--green), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero h2 {
-      color: #fff;
-      margin-top: 14px;
-      font-size: 22px;
-      font-weight: 800;
-    }
-
-    .hero p {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.6;
-      max-width: 460px;
-    }
-
-    .footer {
-      position: fixed;
-      z-index: 3;
-      left: 42px;
-      right: 42px;
-      bottom: 20px;
-      min-height: 52px;
-      padding: 14px 22px;
-      border-radius: 20px;
-      background: rgba(1, 10, 25, 0.54);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      color: #d4ecff;
-      font-size: 14px;
-    }
-
-    @media (max-width: 1200px) {
-      .hero {
-        display: none;
-      }
-
-      .login-page {
-        justify-content: center;
-        padding: 24px;
-        background-position: center center;
-      }
-
-      .login-card {
-        width: 100%;
-        max-width: 520px;
-        margin-left: 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      body {
-        overflow: auto;
-      }
-
-      .login-page {
-        padding: 18px;
-        align-items: flex-start;
-        padding-top: 44px;
-        background-position: 68% center;
-      }
-
-      .login-card {
-        padding: 22px;
-        border-radius: 22px;
-      }
-
-      .logo-row {
-        gap: 12px;
-        margin-bottom: 20px;
-      }
-
-      .logo-row img {
-        height: 44px;
-        max-width: 160px;
-      }
-
-      .welcome {
-        font-size: 36px;
-      }
-
-      .sub {
-        font-size: 16px;
-      }
-
-      .platform {
-        font-size: 11px;
-        letter-spacing: 0.20em;
-        white-space: normal;
-      }
-
-      .options {
-        font-size: 13px;
-      }
-
-      .bottom {
-        font-size: 12px;
-      }
-
-      .footer {
-        position: static;
-        margin: 0 18px 18px;
-        flex-direction: column;
-        text-align: center;
-        font-size: 12px;
-      }
-    }
+    @media (max-width:760px){
+      html,body{overflow:auto;position:static}.login-page{min-height:100vh;height:auto;overflow:auto;background-size:cover;background-position:center}.login-shell{height:auto;min-height:100vh;padding:18px;align-items:flex-start}.glass-panel{width:100%;max-height:none;padding:24px 20px;margin-bottom:90px}.logo-bar{gap:12px;margin-bottom:30px}.logo-img{width:52px;height:52px}.logo-text strong{font-size:30px}.logo-unit-right .logo-text strong{font-size:22px}.logo-text span{font-size:9px}.logo-unit-right .logo-text span{font-size:10px}.hero-title h1{font-size:34px}.hero-title .thai{font-size:20px}.hero-title .sub{letter-spacing:.26em;font-size:11px}.field,.signin-btn,.google-btn{height:56px}.trust-line{grid-template-columns:1fr;gap:10px}.trust-item{border-right:0}.page-footer{left:18px;right:18px;bottom:14px;height:auto;min-height:58px;padding:12px;gap:8px;font-size:12px;flex-wrap:wrap;justify-content:center}}
   </style>
 </head>
-
 <body>
-  <main class="login-page">
-    <section class="login-card" aria-label="Smart Platform Analytics Login">
-      <div class="logo-row">
-        <img src="assets/images/logos/bma-logo.png" alt="BMA Logo" onerror="this.style.display='none'" />
-        <img src="assets/images/logos/chatuchak-logo.png" alt="Chatuchak Logo" onerror="this.style.display='none'" />
-      </div>
+  <main class="login-page" id="loginPage">
+    <section class="login-shell" aria-label="Smart Platform Analytics Login">
+      <div class="glass-panel">
+        <header class="logo-bar">
+          <div class="logo-unit">
+            <img src="https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/bma-logo.png" alt="BMA Logo" class="logo-img" />
+            <div class="logo-text"><strong>BMA</strong><span>BANGKOK METROPOLITAN<br />ADMINISTRATION</span></div>
+          </div>
+          <i class="logo-divider"></i>
+          <div class="logo-unit logo-unit-right">
+            <img src="https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/chatuchak-logo.png" alt="Chatuchak Logo" class="logo-img" />
+            <div class="logo-text"><strong>จตุจักร</strong><span>สำนักงานเขตจตุจักร<br />กรุงเทพมหานคร</span></div>
+          </div>
+        </header>
 
-      <h1 class="welcome">WELCOME BACK</h1>
-      <div class="sub">ยินดีต้อนรับเข้าสู่ระบบ</div>
-      <div class="platform">SMART PLATFORM ANALYTICS</div>
+        <div class="hero-title">
+          <h1>WELCOME BACK</h1>
+          <div class="thai">ยินดีต้อนรับเข้าสู่ระบบ</div>
+          <div class="sub">SMART PLATFORM ANALYTICS</div>
+          <div class="dash"></div>
+        </div>
 
-      <div class="input">
-        <span>👤</span>
-        <input type="text" placeholder="Username" autocomplete="username" />
-      </div>
-
-      <div class="input">
-        <span>🔒</span>
-        <input type="password" placeholder="Password" autocomplete="current-password" />
-      </div>
-
-      <div class="options">
-        <label>☑ Remember me</label>
-        <span>Forgot Password?</span>
-      </div>
-
-      <button class="btn" type="button" onclick="window.location.href='portal.html'">SIGN IN →</button>
-
-      <div class="bottom">
-        <div>🛡 Secure</div>
-        <div>AI Smart</div>
-        <div>🌱 Sustainable</div>
+        <form class="login-card" id="loginForm">
+          <label class="field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+            <input id="username" name="username" type="text" placeholder="Username" autocomplete="username" required />
+          </label>
+          <label class="field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+            <button class="ghost-btn" id="togglePassword" type="button" aria-label="Show password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </label>
+          <div class="row-options">
+            <label class="remember"><input type="checkbox" /> Remember me</label>
+            <a class="forgot" href="#">Forgot Password?</a>
+          </div>
+          <button class="signin-btn" type="submit">SIGN IN →</button>
+          <div class="or">or</div>
+          <button class="google-btn" type="button"><span class="google-g"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span> Sign in with Google</button>
+          <div id="loginMessage" class="login-message" role="status"></div>
+          <footer class="trust-line">
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-5"/></svg><span>Secure<small>ปลอดภัย</small></span></div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/><path d="M10 14V9l4 5V9"/></svg><span>Smart<small>ทันสมัย</small></span></div>
+            <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 4C13 4 6 8 5 18c7 0 14-4 15-14Z"/><path d="M4 20c4-6 8-9 13-12"/></svg><span>Sustainable<small>ยั่งยืน</small></span></div>
+          </footer>
+        </form>
       </div>
     </section>
-
-    <section class="hero" aria-label="Smart Platform Analytics">
-      <h1>SMART PLATFORM <span>ANALYTICS</span></h1>
-      <h2>CHATUCHAK DIGITAL COMMAND CENTER</h2>
-      <p>ขับเคลื่อนด้วยข้อมูล เทคโนโลยี และนวัตกรรม เพื่อยกระดับการให้บริการประชาชน</p>
-    </section>
+    <footer class="page-footer">
+      <div class="footer-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Secure Connection</span><span class="dot"></span><span>256-bit SSL Encryption</span></div>
+      <div class="footer-center">© 2025 Bangkok Metropolitan Administration <span>|</span> Chatuchak District Office</div>
+      <div class="version">v1.0.0</div>
+    </footer>
   </main>
 
-  <footer class="footer">
-    <div>🔒 Secure Connection • 256-bit SSL Encryption</div>
-    <div>© Bangkok Metropolitan Administration | Chatuchak District Office</div>
-  </footer>
+  <section id="dashboardPage" class="dashboard-page hidden">
+    <h2>Executive Overview</h2>
+    <p>Smart Platform Analytics</p>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+  </section>
+
+  <script>
+    const loginPage=document.getElementById('loginPage');
+    const dashboardPage=document.getElementById('dashboardPage');
+    const form=document.getElementById('loginForm');
+    const msg=document.getElementById('loginMessage');
+    const toggle=document.getElementById('togglePassword');
+    const pass=document.getElementById('password');
+    const logout=document.getElementById('logoutBtn');
+    toggle?.addEventListener('click',()=>{pass.type=pass.type==='password'?'text':'password'});
+    form?.addEventListener('submit',(e)=>{e.preventDefault();msg.textContent='กำลังเข้าสู่ระบบ...';setTimeout(()=>{loginPage.classList.add('hidden');dashboardPage.classList.remove('hidden');document.body.style.position='static';document.body.style.overflow='auto';},450)});
+    logout?.addEventListener('click',()=>{dashboardPage.classList.add('hidden');loginPage.classList.remove('hidden');document.body.style.position='fixed';document.body.style.overflow='hidden';msg.textContent='';});
+  </script>
 </body>
 </html>
