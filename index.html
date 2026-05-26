@@ -10,133 +10,158 @@
       --cyan:#19f4df;
       --blue:#1685ff;
       --text:#f7fbff;
-      --muted:rgba(247,251,255,.72);
-      --line:rgba(95,214,255,.34);
-      --bg-url:none;
+      --bg-local:'assets/images/backgrounds/login-bg.png';
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{width:100%;height:100%;overflow:hidden;background:#020918;color:var(--text);font-family:Inter,"Segoe UI",Tahoma,sans-serif}
     body{position:fixed;inset:0}
-
     .hidden{display:none!important}
 
     .login-page{
-      position:relative;width:100vw;height:100vh;overflow:hidden;
-      background:#020918;
+      position:relative;
+      width:100vw;
+      height:100vh;
+      overflow:hidden;
       isolation:isolate;
+      background:#020918;
     }
 
     .city-bg{
-      position:absolute;z-index:-3;
-      right:-16vw;top:50%;
-      width:78vw;max-width:none;height:auto;
-      transform:translateY(-50%);
+      position:absolute;
+      z-index:-4;
+      top:43%;
+      right:-2vw;
+      width:76vw;
+      height:auto;
+      max-height:86vh;
       object-fit:contain;
       object-position:right center;
-      filter:saturate(1.08) contrast(1.04);
-      user-select:none;pointer-events:none;
+      transform:translateY(-50%);
+      transform-origin:right center;
+      filter:contrast(1.28) saturate(1.18) brightness(1.05) drop-shadow(0 0 18px rgba(0,180,255,.18));
+      pointer-events:none;
+      user-select:none;
     }
 
-    .city-bg-fallback{
-      position:absolute;inset:0;z-index:-4;
-      background-image:var(--bg-url);
-      background-repeat:no-repeat;
-      background-size:78% auto;
-      background-position:116% center;
-      opacity:1;
-    }
-
-    .bg-overlay{
-      position:absolute;inset:0;z-index:-2;pointer-events:none;
+    .login-page::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-3;
+      pointer-events:none;
       background:
-        radial-gradient(circle at 74% 52%, rgba(0,212,255,.12), transparent 35%),
-        linear-gradient(90deg, rgba(1,8,24,.82) 0%, rgba(1,8,24,.56) 34%, rgba(1,8,24,.20) 64%, rgba(1,8,24,.08) 100%),
-        linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.24));
+        radial-gradient(circle at 70% 50%, rgba(25,244,223,.14), transparent 34%),
+        linear-gradient(90deg, rgba(1,8,24,.70) 0%, rgba(1,8,24,.44) 28%, rgba(1,8,24,.13) 58%, rgba(1,8,24,.06) 100%);
     }
 
+    .login-page::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      background:linear-gradient(180deg, rgba(0,0,0,.00) 0%, rgba(0,0,0,.16) 72%, rgba(0,0,0,.40) 100%);
+    }
 
-    .login-shell{position:relative;z-index:1;width:100%;height:100%;padding:38px 38px 28px;display:flex;align-items:center}
+    .login-shell{
+      position:relative;
+      z-index:1;
+      width:100%;
+      height:100%;
+      padding:clamp(18px,3vh,32px) clamp(24px,4vw,58px) 86px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+    }
 
     .glass-panel{
-      width:min(590px,42vw);max-height:calc(100vh - 112px);overflow:hidden;
-      padding:42px 44px 34px;border-radius:18px;
-      background:rgba(4,16,38,.48);
-      border:1px solid rgba(83,217,255,.52);
-      box-shadow:0 24px 70px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.14), 0 0 34px rgba(0,176,255,.08);
-      backdrop-filter:blur(18px) saturate(138%);
-      -webkit-backdrop-filter:blur(18px) saturate(138%);
+      width:clamp(350px,31vw,420px);
+      max-height:calc(100vh - 116px);
+      overflow:hidden;
+      padding:24px 26px 20px;
+      border-radius:18px;
+      background:rgba(4,16,38,.38);
+      border:1px solid rgba(83,217,255,.46);
+      box-shadow:0 22px 62px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.14), 0 0 30px rgba(0,176,255,.10);
+      backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);
     }
 
-    .logo-bar{display:flex;align-items:center;gap:22px;margin-bottom:46px}
-    .logo-unit{display:flex;align-items:center;gap:14px;min-width:0}
-    .logo-divider{width:1px;height:62px;background:rgba(255,255,255,.24);display:block;flex:0 0 auto}
-    .logo-img{width:66px;height:66px;object-fit:contain;background:rgba(255,255,255,.96);border-radius:4px;padding:4px;box-shadow:0 0 0 1px rgba(255,255,255,.15)}
-    .logo-text strong{display:block;font-size:42px;line-height:.9;font-weight:900;letter-spacing:.02em}
-    .logo-unit-right .logo-text strong{font-size:30px;letter-spacing:.01em}
-    .logo-text span{display:block;margin-top:8px;font-size:11px;line-height:1.2;font-weight:800;color:#fff;text-transform:uppercase}
-    .logo-unit-right .logo-text span{text-transform:none;font-size:12px;line-height:1.25}
+    .logo-bar{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+    .logo-unit{display:flex;align-items:center;gap:10px;min-width:0}
+    .logo-divider{width:1px;height:44px;background:rgba(255,255,255,.22);display:block;flex:0 0 auto}
+    .logo-img{width:46px;height:46px;object-fit:contain;background:rgba(255,255,255,.94);border-radius:4px;padding:3px;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+    .logo-text strong{display:block;font-size:27px;line-height:.92;font-weight:900;letter-spacing:.02em}
+    .logo-unit-right .logo-text strong{font-size:21px;letter-spacing:.01em}
+    .logo-text span{display:block;margin-top:5px;font-size:8px;line-height:1.15;font-weight:800;color:#fff;text-transform:uppercase;opacity:.86}
+    .logo-unit-right .logo-text span{text-transform:none;font-size:9px;line-height:1.2}
 
-    .hero-title{text-align:center;margin-bottom:28px}
-    .hero-title h1{font-size:48px;line-height:1;font-weight:900;letter-spacing:.045em;background:linear-gradient(90deg,#22f7d2,#1685ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 28px rgba(0,211,255,.16)}
-    .hero-title .thai{margin-top:12px;font-size:25px;font-weight:800;color:#fff}
-    .hero-title .sub{margin-top:10px;font-size:14px;letter-spacing:.44em;color:rgba(255,255,255,.70)}
-    .hero-title .dash{width:170px;height:1px;margin:16px auto 0;background:linear-gradient(90deg,transparent,rgba(26,245,222,.8),transparent);position:relative}
-    .hero-title .dash::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--cyan);transform:translate(-50%,-50%);box-shadow:0 0 15px var(--cyan)}
+    .hero-title{text-align:center;margin-bottom:20px}
+    .hero-title h1{font-size:34px;line-height:1;font-weight:900;letter-spacing:.04em;background:linear-gradient(90deg,#22f7d2,#1685ff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 24px rgba(0,211,255,.16)}
+    .hero-title .thai{margin-top:9px;font-size:18px;font-weight:800;color:#fff}
+    .hero-title .sub{margin-top:8px;font-size:10px;letter-spacing:.34em;color:rgba(255,255,255,.68)}
+    .hero-title .dash{width:128px;height:1px;margin:12px auto 0;background:linear-gradient(90deg,transparent,rgba(26,245,222,.82),transparent);position:relative}
+    .hero-title .dash::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;background:var(--cyan);transform:translate(-50%,-50%);box-shadow:0 0 15px var(--cyan)}
 
-    .login-card{display:flex;flex-direction:column;gap:18px}
-    .field{height:64px;display:flex;align-items:center;gap:18px;padding:0 20px;border:1px solid rgba(143,190,229,.38);border-radius:9px;background:rgba(2,10,28,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
-    .field svg{width:26px;height:26px;color:#fff;opacity:.9;flex:0 0 auto}
-    .field input{width:100%;height:100%;border:0;outline:0;background:transparent;color:#fff;font-size:18px}
+    .login-card{display:flex;flex-direction:column;gap:12px}
+    .field{height:48px;display:flex;align-items:center;gap:12px;padding:0 15px;border:1px solid rgba(143,190,229,.36);border-radius:9px;background:rgba(2,10,28,.30);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .field svg{width:20px;height:20px;color:#fff;opacity:.9;flex:0 0 auto}
+    .field input{width:100%;height:100%;border:0;outline:0;background:transparent;color:#fff;font-size:15px}
     .field input::placeholder{color:rgba(255,255,255,.68)}
-    .ghost-btn{border:0;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;opacity:.88}
-    .ghost-btn svg{width:24px;height:24px}
+    .ghost-btn{border:0;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;opacity:.86}.ghost-btn svg{width:20px;height:20px}
 
-    .row-options{display:flex;align-items:center;justify-content:space-between;margin-top:0;font-size:14px;color:#fff}
-    .remember{display:flex;align-items:center;gap:12px}
-    .remember input{width:20px;height:20px;accent-color:var(--cyan)}
-    .forgot{color:var(--cyan);text-decoration:none}
+    .row-options{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#fff}
+    .remember{display:flex;align-items:center;gap:9px}.remember input{width:16px;height:16px;accent-color:var(--cyan)}.forgot{color:var(--cyan);text-decoration:none}
 
-    .signin-btn{height:64px;border:0;border-radius:9px;cursor:pointer;font-size:20px;font-weight:900;letter-spacing:.02em;color:#021226;background:linear-gradient(135deg,#24f2ca 0%,#1ccddd 44%,#1685ff 100%);box-shadow:0 12px 30px rgba(0,126,255,.25)}
+    .signin-btn{height:50px;border:0;border-radius:9px;cursor:pointer;font-size:16px;font-weight:900;letter-spacing:.02em;color:#021226;background:linear-gradient(135deg,#24f2ca 0%,#1ccddd 44%,#1685ff 100%);box-shadow:0 10px 26px rgba(0,126,255,.24)}
     .signin-btn:hover{filter:brightness(1.08)}
-    .or{display:flex;align-items:center;gap:16px;color:#fff;opacity:.9;font-size:16px;margin:4px 0}
-    .or::before,.or::after{content:"";height:1px;background:rgba(255,255,255,.15);flex:1}
-    .google-btn{height:64px;border:1px solid rgba(143,190,229,.38);border-radius:9px;background:rgba(2,10,28,.26);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;gap:16px;cursor:pointer}
-    .google-g{font-weight:900;font-size:23px;letter-spacing:-.12em}.google-g span:nth-child(1){color:#4285f4}.google-g span:nth-child(2){color:#db4437}.google-g span:nth-child(3){color:#f4b400}.google-g span:nth-child(4){color:#4285f4}.google-g span:nth-child(5){color:#0f9d58}.google-g span:nth-child(6){color:#db4437}
-    .login-message{min-height:18px;text-align:center;color:#ffdf7d;font-size:13px}
+    .or{display:flex;align-items:center;gap:12px;color:#fff;opacity:.86;font-size:13px;margin:1px 0}.or::before,.or::after{content:"";height:1px;background:rgba(255,255,255,.14);flex:1}
+    .google-btn{height:48px;border:1px solid rgba(143,190,229,.36);border-radius:9px;background:rgba(2,10,28,.24);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer}
+    .google-g{font-weight:900;font-size:19px;letter-spacing:-.12em}.google-g span:nth-child(1){color:#4285f4}.google-g span:nth-child(2){color:#db4437}.google-g span:nth-child(3){color:#f4b400}.google-g span:nth-child(4){color:#4285f4}.google-g span:nth-child(5){color:#0f9d58}.google-g span:nth-child(6){color:#db4437}
+    .login-message{min-height:16px;text-align:center;color:#ffdf7d;font-size:12px}
 
-    .trust-line{margin-top:4px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .trust-item{display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;font-size:15px;line-height:1.25;border-right:1px solid rgba(255,255,255,.12)}
-    .trust-item:last-child{border-right:0}.trust-item svg{width:32px;height:32px;color:var(--cyan);filter:drop-shadow(0 0 10px rgba(26,245,222,.25))}
-    .trust-item small{display:block;color:#fff;font-size:13px;opacity:.9}
+    .trust-line{margin-top:2px;padding-top:15px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .trust-item{display:flex;align-items:center;justify-content:center;gap:7px;color:#fff;font-size:12px;line-height:1.15;border-right:1px solid rgba(255,255,255,.12)}
+    .trust-item:last-child{border-right:0}.trust-item svg{width:23px;height:23px;color:var(--cyan);filter:drop-shadow(0 0 9px rgba(26,245,222,.22))}.trust-item small{display:block;color:#fff;font-size:10px;opacity:.86}
 
-    .page-footer{position:absolute;left:38px;right:38px;bottom:22px;height:58px;border-radius:10px;border:1px solid rgba(83,217,255,.18);background:rgba(4,16,38,.48);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 26px;color:rgba(255,255,255,.74);font-size:15px;z-index:2;box-shadow:0 12px 34px rgba(0,0,0,.22)}
-    .footer-left,.footer-center{display:flex;align-items:center;gap:18px}.footer-left svg{width:22px;height:22px;color:var(--cyan)}.dot{width:5px;height:5px;border-radius:50%;background:#28ebbc;display:inline-block}.version{color:rgba(255,255,255,.78)}
+    .page-footer{position:absolute;left:clamp(24px,4vw,58px);right:clamp(24px,4vw,58px);bottom:20px;height:48px;border-radius:10px;border:1px solid rgba(83,217,255,.18);background:rgba(4,16,38,.40);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 20px;color:rgba(255,255,255,.72);font-size:13px;z-index:2;box-shadow:0 12px 34px rgba(0,0,0,.22)}
+    .footer-left,.footer-center{display:flex;align-items:center;gap:14px}.footer-left svg{width:18px;height:18px;color:var(--cyan)}.dot{width:5px;height:5px;border-radius:50%;background:#28ebbc;display:inline-block}.version{color:rgba(255,255,255,.75)}
 
     .dashboard-page{min-height:100vh;background:#06111f;color:white;padding:30px;font-family:inherit}.dashboard-page h2{font-size:32px}.logout-btn{margin-top:20px;padding:12px 18px;border:0;border-radius:8px;background:#16d9c8;color:#06111f;font-weight:800}
 
-    @media (max-width:1100px){
-      .city-bg{width:94vw;right:-28vw}.city-bg-fallback{background-size:94% auto;background-position:132% center}.glass-panel{width:540px;padding:34px 34px}.logo-text strong{font-size:36px}.hero-title h1{font-size:42px}
+    @media (min-width:1500px){
+      .city-bg{width:74vw;right:-1vw;max-height:88vh}
+      .glass-panel{width:420px}
     }
-    @media (max-width:760px){
-      html,body{overflow:auto;position:static}.login-page{min-height:100vh;height:auto;overflow:auto}.city-bg{width:150vw;right:-48vw;top:38%;opacity:.95}.city-bg-fallback{background-size:cover;background-position:center}.login-shell{height:auto;min-height:100vh;padding:18px;align-items:flex-start}.glass-panel{width:100%;max-height:none;padding:24px 20px;margin-bottom:90px}.logo-bar{gap:12px;margin-bottom:30px}.logo-img{width:52px;height:52px}.logo-text strong{font-size:30px}.logo-unit-right .logo-text strong{font-size:22px}.logo-text span{font-size:9px}.logo-unit-right .logo-text span{font-size:10px}.hero-title h1{font-size:34px}.hero-title .thai{font-size:20px}.hero-title .sub{letter-spacing:.26em;font-size:11px}.field,.signin-btn,.google-btn{height:56px}.trust-line{grid-template-columns:1fr;gap:10px}.trust-item{border-right:0}.page-footer{left:18px;right:18px;bottom:14px;height:auto;min-height:58px;padding:12px;gap:8px;font-size:12px;flex-wrap:wrap;justify-content:center}}
+
+    @media (max-height:760px){
+      .login-shell{padding-top:18px;padding-bottom:70px}.glass-panel{padding:18px 22px 16px;width:clamp(330px,29vw,390px)}.logo-bar{margin-bottom:16px}.hero-title{margin-bottom:14px}.hero-title h1{font-size:30px}.hero-title .thai{font-size:16px}.field,.signin-btn,.google-btn{height:43px}.trust-line{padding-top:10px}.page-footer{height:42px;font-size:12px}
+    }
+
+    @media (max-width:900px){
+      .city-bg{top:50%;width:100vw;right:0;max-height:none;height:100%;object-fit:cover;object-position:center center;transform:translateY(-50%)}
+      .login-shell{padding:18px 18px 82px;align-items:center;justify-content:center}.glass-panel{width:min(92vw,420px);max-height:calc(100vh - 110px)}.page-footer{left:18px;right:18px;font-size:11px;gap:8px;justify-content:center;flex-wrap:wrap;height:auto;min-height:48px;padding:10px}.footer-center{display:none}
+    }
+
+    @media (max-width:520px){
+      .glass-panel{padding:20px 18px}.logo-text span{display:none}.logo-img{width:42px;height:42px}.hero-title h1{font-size:29px}.hero-title .thai{font-size:16px}.hero-title .sub{font-size:9px;letter-spacing:.22em}.trust-line{grid-template-columns:1fr}.trust-item{border-right:0}.footer-left{gap:8px}
+    }
   </style>
 </head>
 <body>
   <main class="login-page" id="loginPage">
-    <div class="city-bg-fallback" aria-hidden="true"></div>
-    <img id="cityBg" class="city-bg" alt="" aria-hidden="true" />
-    <div class="bg-overlay" aria-hidden="true"></div>
+    <img class="city-bg" src="assets/images/backgrounds/login-bg.png" alt="" aria-hidden="true" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/backgrounds/login-bg.png';" />
     <section class="login-shell" aria-label="Smart Platform Analytics Login">
       <div class="glass-panel">
         <header class="logo-bar">
           <div class="logo-unit">
-            <img src="assets/images/logos/bma-logo.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/bma-logo.png'" alt="BMA Logo" class="logo-img" />
+            <img src="assets/images/logos/bma-logo.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/bma-logo.png';" alt="BMA Logo" class="logo-img" />
             <div class="logo-text"><strong>BMA</strong><span>BANGKOK METROPOLITAN<br />ADMINISTRATION</span></div>
           </div>
           <i class="logo-divider"></i>
           <div class="logo-unit logo-unit-right">
-            <img src="assets/images/logos/chatuchak-logo.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/chatuchak-logo.png'" alt="Chatuchak Logo" class="logo-img" />
+            <img src="assets/images/logos/chatuchak-logo.png" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/logos/chatuchak-logo.png';" alt="Chatuchak Logo" class="logo-img" />
             <div class="logo-text"><strong>จตุจักร</strong><span>สำนักงานเขตจตุจักร<br />กรุงเทพมหานคร</span></div>
           </div>
         </header>
@@ -176,7 +201,7 @@
     </section>
     <footer class="page-footer">
       <div class="footer-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Secure Connection</span><span class="dot"></span><span>256-bit SSL Encryption</span></div>
-      <div class="footer-center">© 2025 Bangkok Metropolitan Administration <span>|</span> Chatuchak District Office</div>
+      <div class="footer-center">© 2026 Smart Platform Analytics <span>|</span> Chatuchak District Office</div>
       <div class="version">v1.0.0</div>
     </footer>
   </main>
@@ -188,25 +213,6 @@
   </section>
 
   <script>
-
-    const CITY_BG_CANDIDATES = [
-      '/smart-platform-analytics/assets/images/backgrounds/login-bg.png',
-      'assets/images/backgrounds/login-bg.png',
-      'https://raw.githubusercontent.com/chatuchakdatacenter-wq/smart-platform-analytics/main/assets/images/backgrounds/login-bg.png'
-    ];
-    const cityBg = document.getElementById('cityBg');
-    function loadCityBg(index=0){
-      const url = CITY_BG_CANDIDATES[index];
-      if(!url || !cityBg) return;
-      const test = new Image();
-      test.onload = () => {
-        cityBg.src = url;
-        document.documentElement.style.setProperty('--bg-url', `url("${url}")`);
-      };
-      test.onerror = () => loadCityBg(index + 1);
-      test.src = url;
-    }
-    loadCityBg();
     const loginPage=document.getElementById('loginPage');
     const dashboardPage=document.getElementById('dashboardPage');
     const form=document.getElementById('loginForm');
